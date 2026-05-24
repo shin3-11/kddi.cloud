@@ -1,0 +1,408 @@
+[slides]
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kddi.cloud | Infrastructure Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 0;
+    place-items: center;
+}
+
+.slide-container {
+    align-items: flex-start;
+    background-color: #000;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Urbanist', 'Noto Sans JP', sans-serif;
+    height: 720px;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding: 60px;
+    position: relative;
+    width: 1280px;
+}
+
+/* BACKGROUND STYLING - Abstract Shapes */
+.slide-container::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 91, 154, 0.2) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.slide-container::after {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    left: 60px;
+    right: 60px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.slide-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 2. TYPOGRAPHY */
+h1, h2, h3 {
+    margin: 0;
+    color: #f5f5f5;
+}
+
+p, li {
+    color: #daffde;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.slide-title {
+    font-size: 54px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #005B9A; /* KDDI Blue */
+    text-align: left;
+    width: 100%;
+}
+
+.slide-title span {
+    color: #EB5505; /* au Orange */
+}
+
+.subtitle {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+/* 3. LAYOUTS */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+}
+
+.title-layout {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-layout h1 {
+    font-size: 100px;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.two-column {
+    display: flex;
+    gap: 60px;
+    width: 100%;
+}
+
+.two-column > div {
+    flex: 1;
+}
+
+.tiled-content {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+.tile {
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tile .icon-container {
+    width: 60px;
+    height: 60px;
+    background: #005B9A;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #fff;
+}
+
+.image-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 400px;
+    width: 100%;
+    border: 1px solid rgba(0, 91, 154, 0.3);
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BLEED IMAGE LAYOUT */
+.bleed-image-layout {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    padding: 0 !important;
+    align-items: start !important;
+}
+
+.bleed-image-layout .content-container {
+    padding: 60px;
+}
+
+.bleed-image-side {
+    height: 720px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* CHART & NUMBERS */
+.highlight-number {
+    font-size: 160px;
+    font-weight: 700;
+    color: #EB5505;
+    line-height: 1;
+}
+
+.bullet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.bullet-list li {
+    font-size: 22px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 40px;
+}
+
+.bullet-list li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #EB5505;
+}
+
+/* Q&A */
+.qa-layout {
+    text-align: center;
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>kddi<span>.cloud</span></h1>
+        <p class="subtitle">GitHub Pages を活用した次世代の静的ホスティング</p>
+        <p style="color: #EB5505; font-size: 20px; margin-top: 40px;">これはGitHubのwebサーバーです</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <div class="title-layout">
+        <h2 style="font-size: 80px;">Modern <span>Architecture</span></h2>
+        <p class="subtitle">グローバルな分散配信と高い信頼性</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Infrastructure <span>Overview</span></h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="tile">
+                <div class="icon-container"><i class="fa-solid fa-server"></i></div>
+                <h3>GitHub Pages Deployment</h3>
+                <p>リポジトリと完全に統合されたシームレスなデプロイ。バージョン管理とウェブホスティングの融合を実現します。</p>
+            </div>
+            <div class="tile">
+                <div class="icon-container"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Static Site Delivery</h3>
+                <p>高速な読み込み速度と低遅延のグローバル配信。複雑なサーバー管理なしで、最適なパフォーマンスを提供します。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Cloud <span>Engineering</span></h2>
+    <div class="content-area">
+        <div class="two-column" style="align-items: center;">
+            <div class="image-wrapper" style="border-radius: 50%; width: 400px; height: 400px; flex: none;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/11978834110035583534" alt="Cloud Engineer">
+            </div>
+            <div>
+                <h3>エキスパートによる管理</h3>
+                <p>kddi.cloud は最新の DevOps プラクティスに基づき設計されています。GitHub Actions を通じた自動 CI/CD パイプラインにより、コードをプッシュするだけで最新の状態が反映されます。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">High-Speed <span>Connectivity</span></h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>グローバル・バックボーン</h3>
+                <p>世界中に広がるコンテンツデリバリネットワーク（CDN）を利用。ユーザーの地理的場所に関わらず、ミリ秒単位の応答速度を実現します。</p>
+                <ul class="bullet-list" style="margin-top: 30px;">
+                    <li>エッジコンピューティングによる最適化</li>
+                    <li>SSL/TLSによるセキュアな通信</li>
+                    <li>スケーラブルな帯域幅確保</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/15448249304993462225" alt="Data Center" style="object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide6">
+    <div class="content-container">
+        <h2 class="slide-title">Digital <span>Future</span></h2>
+        <div class="content-area">
+            <h3>境界のない接続性</h3>
+            <p>クラウド・ネイティブな発想で、インフラの制約から解放されます。GitHub の堅牢なサーバー群が、あなたのプロジェクトを強力にバックアップします。</p>
+        </div>
+    </div>
+    <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/15222712260864916355" alt="Holographic Network">
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Core <span>Capabilities</span></h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon-container"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Advanced Security</h3>
+                <p>GitHub Enterprise 級の保護。DDoS 対策と自動脆弱性スキャン。</p>
+            </div>
+            <div class="tile">
+                <div class="icon-container"><i class="fa-solid fa-code"></i></div>
+                <h3>Clean Code</h3>
+                <p>クリーンな静的HTMLによる攻撃対象領域の最小化。</p>
+            </div>
+            <div class="tile">
+                <div class="icon-container"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Scalability</h3>
+                <p>アクセス増に合わせて自動的にスケールする弾力的なインフラ。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <div class="title-layout">
+        <blockquote style="font-size: 48px; font-style: italic; color: #fff; max-width: 900px;">
+            "Innovation is the ability to see change as an opportunity - not a threat."
+        </blockquote>
+        <p style="font-size: 24px; color: #EB5505; margin-top: 30px;">— kddi.cloud Operations Team</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Uptime <span>Performance</span></h2>
+    <div class="content-area">
+        <div class="two-column" style="align-items: center;">
+            <div class="highlight-number">99.9<span>%</span></div>
+            <div>
+                <h3>確かな稼働実績</h3>
+                <p>GitHub のグローバルインフラに支えられた高い可用性。ミッションクリティカルなコンテンツ配信にも対応する安定性を提供します。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Key <span>Benefits</span></h2>
+    <div class="content-area">
+        <ul class="bullet-list">
+            <li><strong>自動デプロイメント:</strong> Git プッシュのみでウェブサイトを更新可能。</li>
+            <li><strong>コスト効率:</strong> 物理サーバーを持たないことによる劇的なTCO削減。</li>
+            <li><strong>独自ドメイン対応:</strong> kddi.cloud ブランドの下での柔軟な展開。</li>
+            <li><strong>HTTPS対応:</strong> すべての通信を標準で暗号化。</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Technology <span>Stack</span></h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile" style="padding: 20px;">
+                <div class="image-wrapper" style="height: 200px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/11301139436361483640" alt="HTML5"></div>
+                <h4 style="text-align: center;">HTML5 / CSS3</h4>
+            </div>
+            <div class="tile" style="padding: 20px;">
+                <div class="image-wrapper" style="height: 200px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/3342000227101447465" alt="GitHub"></div>
+                <h4 style="text-align: center;">GitHub Pages</h4>
+            </div>
+            <div class="tile" style="padding: 20px;">
+                <div class="image-wrapper" style="height: 200px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/8786788313060126872" alt="Cloud"></div>
+                <h4 style="text-align: center;">Cloud Native</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12">
+    <div class="qa-layout">
+        <h2 style="font-size: 80px;">Any <span>Questions?</span></h2>
+        <p class="subtitle">Thank you for exploring kddi.cloud</p>
+        <div style="margin-top: 60px;">
+            <p style="font-size: 20px;">これはGitHubのwebサーバーです</p>
+            <p style="color: #666; margin-top: 20px;">www.kddi.cloud | @github-server</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
